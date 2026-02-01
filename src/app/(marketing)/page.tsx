@@ -83,41 +83,45 @@ export default function HomePage() {
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative min-h-[32rem] py-16 md:py-24 overflow-hidden">
-        {/* Modern bluish gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 to-slate-100" />
+      {/* Hero Section - Dark blue aesthetic, static */}
+      <section className="relative min-h-[32rem] py-12 sm:py-16 md:py-24 overflow-hidden">
+        {/* Dark blue gradient base */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-950 to-indigo-950" />
         
-        {/* Decorative gradient blobs */}
-        <div className="absolute top-0 -left-40 w-80 h-80 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-pulse" />
-        <div className="absolute top-20 right-0 w-96 h-96 bg-indigo-200 rounded-full mix-blend-multiply filter blur-3xl opacity-40" />
-        <div className="absolute -bottom-20 left-1/3 w-80 h-80 bg-sky-200 rounded-full mix-blend-multiply filter blur-3xl opacity-50" />
+        {/* Static soft orbs (no animation) */}
+        <div className="absolute -top-24 -right-24 w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-blue-600/20 blur-3xl" />
+        <div className="absolute top-1/2 -left-32 w-64 h-64 sm:w-80 sm:h-80 rounded-full bg-indigo-500/15 blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-56 h-56 sm:w-72 sm:h-72 rounded-full bg-cyan-500/10 blur-3xl" />
         
-        {/* Subtle grid pattern overlay */}
+        {/* Subtle dot grid overlay */}
         <div 
-          className="absolute inset-0 opacity-[0.03]"
+          className="absolute inset-0 opacity-[0.4]"
           style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0)`,
+            backgroundSize: '32px 32px',
           }}
         />
         
+        {/* Bottom edge fade for depth */}
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+        
         <div className="container mx-auto px-4 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <Badge variant="secondary" className="text-sm">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div className="space-y-5 sm:space-y-6">
+              <Badge variant="secondary" className="text-sm bg-white/10 text-blue-100 border-white/20 hover:bg-white/15">
                 Admissions Open for 2025-26
               </Badge>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white">
                 Your Path to a{' '}
-                <span className="text-primary">Brighter Future</span>{' '}
+                <span className="text-blue-300">Brighter Future</span>{' '}
                 Starts Here
               </h1>
-              <p className="text-lg text-muted-foreground">
+              <p className="text-base sm:text-lg text-blue-100/90 max-w-xl">
                 Explore online degree programs from 15+ UGC-recognized universities. 
                 Get expert counselling, flexible learning, and 100% valid degrees.
               </p>
-              <div className="flex flex-wrap gap-4">
-                <Button size="lg" asChild>
+              <div className="flex flex-wrap gap-3 sm:gap-4">
+                <Button size="lg" asChild className="bg-white text-blue-900 hover:bg-blue-50">
                   <Link href="/degrees">
                     Explore Degrees <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
@@ -125,6 +129,7 @@ export default function HomePage() {
                 <Button 
                   size="lg" 
                   variant="outline"
+                  className="bg-transparent border-2 border-white text-white hover:bg-white/15 hover:text-white"
                   onClick={() => setShowEnquiryForm(true)}
                 >
                   Get Free Counselling
@@ -132,17 +137,17 @@ export default function HomePage() {
               </div>
               
               {/* Quick Stats */}
-              <div className="flex flex-wrap gap-6 pt-4">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="h-5 w-5 text-green-600" />
+              <div className="flex flex-wrap gap-4 sm:gap-6 pt-2 sm:pt-4">
+                <div className="flex items-center gap-2 text-blue-100/90">
+                  <CheckCircle2 className="h-5 w-5 text-emerald-400 shrink-0" />
                   <span className="text-sm">UGC Recognized</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="h-5 w-5 text-green-600" />
+                <div className="flex items-center gap-2 text-blue-100/90">
+                  <CheckCircle2 className="h-5 w-5 text-emerald-400 shrink-0" />
                   <span className="text-sm">NAAC Accredited</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="h-5 w-5 text-green-600" />
+                <div className="flex items-center gap-2 text-blue-100/90">
+                  <CheckCircle2 className="h-5 w-5 text-emerald-400 shrink-0" />
                   <span className="text-sm">Placement Assistance</span>
                 </div>
               </div>
