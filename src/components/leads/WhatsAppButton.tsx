@@ -41,7 +41,7 @@ export function WhatsAppButton({ degreeName, className }: WhatsAppButtonProps) {
       target="_blank"
       rel="noopener noreferrer"
       className={`
-        fixed bottom-24 lg:bottom-6 right-4 z-40
+        fixed bottom-[calc(env(safe-area-inset-bottom)+1.5rem)] right-4 z-40
         p-4 bg-green-500 hover:bg-green-600 text-white rounded-full
         shadow-lg hover:shadow-xl transition-all duration-300
         ${showPulse ? 'animate-pulse' : ''}

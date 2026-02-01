@@ -21,6 +21,7 @@ export function DegreeCard({ degree, showCompare = true }: DegreeCardProps) {
   const { isInCompare, addToCompare, removeFromCompare, canAddMore } = useDegreeCompareStore();
   
   const inCompare = isInCompare(degree.id);
+  const degreeHref = `/degrees/${degree.slug}`;
   
   const handleCompareToggle = () => {
     if (inCompare) {
@@ -37,7 +38,13 @@ export function DegreeCard({ degree, showCompare = true }: DegreeCardProps) {
   };
 
   return (
-    <Card className="group hover:shadow-lg transition-shadow duration-300 flex flex-col h-full">
+    <Card className="group hover:shadow-lg transition-shadow duration-300 flex flex-col h-full relative">
+      {/* Make entire card clickable (buttons/controls stop propagation below) */}
+      <Link
+        href={degreeHref}
+        aria-label={`Open ${degree.name} details`}
+        className="absolute inset-0 z-0"
+      />
       <CardHeader className="pb-3">
         <div className="flex items-start justify-between gap-2">
           <div className="flex items-center gap-3">
@@ -120,7 +127,11 @@ export function DegreeCard({ degree, showCompare = true }: DegreeCardProps) {
             <Checkbox 
               id={`compare-${degree.id}`}
               checked={inCompare}
-              onCheckedChange={handleCompareToggle}
+              onCheckedChange={(val) => {
+                // Prevent clicking the checkbox from opening the card link
+                void val;
+                handleCompareToggle();
+              }}
               disabled={!inCompare && !canAddMore()}
             />
             <label 
@@ -132,12 +143,20 @@ export function DegreeCard({ degree, showCompare = true }: DegreeCardProps) {
           </div>
         )}
         <div className="flex gap-2 w-full">
-          <Button asChild variant="outline" className="flex-1">
-            <Link href={`/degrees/${degree.slug}`}>Know More</Link>
+          <Button asChild variant="outline" className="flex-1 relative z-10">
+            <Link
+              href={degreeHref}
+              onClick={(e) => e.stopPropagation()}
+            >
+              Know More
+            </Link>
           </Button>
           <Button 
-            className="flex-1"
-            onClick={() => setShowEnquiryForm(true)}
+            className="flex-1 relative z-10"
+            onClick={(e) => {
+              e.stopPropagation();
+              setShowEnquiryForm(true);
+            }}
           >
             Enquire Now
           </Button>
