@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createAdminClient } from '@/lib/supabase/admin';
+import type { LeadInsert } from '@/lib/supabase/types';
 
 function isUuid(value: unknown): value is string {
   if (typeof value !== 'string') return false;
@@ -32,9 +33,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    const safeName = String(name).trim();
+    const safePhone = String(phone).trim();
+
     // Phone validation (10 digits)
     const phoneRegex = /^[0-9]{10}$/;
-    if (!phoneRegex.test(phone)) {
+    if (!phoneRegex.test(safePhone)) {
       return NextResponse.json(
         { error: 'Please enter a valid 10-digit phone number' },
         { status: 400 }
@@ -43,17 +47,23 @@ export async function POST(request: NextRequest) {
 
     // Persist lead in Supabase (server-side)
     const supabase = createAdminClient();
-    const insertPayload = {
-      name,
-      phone,
-      email: email || null,
-      current_qualification: currentQualification || null,
+    const insertPayload: LeadInsert = {
+      name: safeName,
+      phone: safePhone,
+      email: typeof email === 'string' && email.trim() ? email.trim() : null,
+      current_qualification:
+        typeof currentQualification === 'string' && currentQualification.trim()
+          ? currentQualification.trim()
+          : null,
       // Your UI currently uses mock IDs that are NOT UUIDs.
       // Only persist the FK when the provided id is a valid UUID.
       interested_degree_id: isUuid(interestedDegreeId) ? interestedDegreeId : null,
-      interested_degree_name: interestedDegreeName || null,
-      source: source || 'website',
-      page_url: pageUrl || null,
+      interested_degree_name:
+        typeof interestedDegreeName === 'string' && interestedDegreeName.trim()
+          ? interestedDegreeName.trim()
+          : null,
+      source: typeof source === 'string' && source.trim() ? source.trim() : 'website',
+      page_url: typeof pageUrl === 'string' && pageUrl.trim() ? pageUrl.trim() : null,
       status: 'new',
     };
 
