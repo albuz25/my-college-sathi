@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { GraduationCap, Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, Mail, MapPin } from 'lucide-react';
 
 const degrees = [
   { name: 'MBA', href: '/degrees/mba' },
@@ -25,11 +25,13 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="space-y-4">
-            <Link href="/" className="flex items-center gap-2">
-              <GraduationCap className="h-8 w-8 text-primary" />
-              <span className="text-xl font-bold text-white">
-                My College <span className="text-primary">Sathi</span>
-              </span>
+            <Link href="/" className="inline-flex items-center">
+              <img
+                src="/images/mycollegelogo.png"
+                alt="My College Sathi"
+                className="h-10 w-auto block scale-[1.06] origin-left"
+                loading="lazy"
+              />
             </Link>
             <p className="text-sm text-slate-400">
               Your trusted partner for online degree admissions. We help students find the right degree 
@@ -77,14 +79,14 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-center gap-2 text-sm">
                 <Phone className="h-4 w-4 text-primary" />
-                <a href="tel:+91XXXXXXXXXX" className="hover:text-primary">
-                  +91 XXXX XXX XXX
+                <a href="tel:+918048048077" className="hover:text-primary">
+                  080 4804 8077
                 </a>
               </li>
               <li className="flex items-center gap-2 text-sm">
                 <Mail className="h-4 w-4 text-primary" />
-                <a href="mailto:info@mycollegesathi.com" className="hover:text-primary">
-                  info@mycollegesathi.com
+                <a href="mailto:info@adveducare.in" className="hover:text-primary">
+                  info@adveducare.in
                 </a>
               </li>
               <li className="flex items-start gap-2 text-sm">

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { Menu, GraduationCap, Phone } from 'lucide-react';
+import { Menu, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { LeadMagnetForm } from '@/components/leads/LeadMagnetForm';
@@ -16,6 +16,7 @@ const navigation = [
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [showEnquiryForm, setShowEnquiryForm] = useState(false);
+  const [logoFailed, setLogoFailed] = useState(false);
 
   return (
     <>
@@ -23,11 +24,20 @@ export function Header() {
         <div className="container mx-auto px-4">
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2">
-              <GraduationCap className="h-8 w-8 text-primary" />
-              <span className="text-xl font-bold">
-                My College <span className="text-primary">Sathi</span>
-              </span>
+            <Link href="/" className="flex items-center">
+              {!logoFailed ? (
+                <img
+                  src="/images/mycollegelogo.png"
+                  alt="My College Sathi"
+                  className="h-10 w-auto block scale-[1.08] origin-left"
+                  loading="eager"
+                  onError={() => setLogoFailed(true)}
+                />
+              ) : (
+                <span className="text-base font-bold text-foreground">
+                  My College Sathi
+                </span>
+              )}
             </Link>
 
             {/* Desktop Navigation */}
@@ -45,7 +55,7 @@ export function Header() {
 
             {/* CTA Buttons */}
             <div className="hidden md:flex items-center gap-3">
-              <a href="tel:+91XXXXXXXXXX" className="flex items-center gap-1 text-sm text-muted-foreground hover:text-primary">
+              <a href="tel:+918048048077" className="flex items-center gap-1 text-sm text-muted-foreground hover:text-primary">
                 <Phone className="h-4 w-4" />
                 <span>Call Now</span>
               </a>
@@ -64,17 +74,30 @@ export function Header() {
               </SheetTrigger>
               <SheetContent side="right" className="w-[320px] p-0">
                 <SheetHeader className="border-b">
-                  <div className="flex items-center gap-2">
-                    <div className="h-9 w-9 rounded-lg bg-primary/10 flex items-center justify-center">
-                      <GraduationCap className="h-5 w-5 text-primary" />
-                    </div>
-                    <div className="leading-tight">
-                      <SheetTitle className="text-base">My College Sathi</SheetTitle>
-                      <SheetDescription className="text-xs">
-                        Online degrees • Counselling • Admissions
-                      </SheetDescription>
-                    </div>
-                  </div>
+                  <Link
+                    href="/"
+                    className="inline-flex items-center"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {!logoFailed ? (
+                      <img
+                        src="/images/mycollegelogo.png"
+                        alt="My College Sathi"
+                        className="h-10 w-auto block scale-[1.08] origin-left"
+                        loading="eager"
+                        onError={() => setLogoFailed(true)}
+                      />
+                    ) : (
+                      <span className="text-base font-bold text-foreground">
+                        My College Sathi
+                      </span>
+                    )}
+                  </Link>
+                  {/* Keep these exports in use even when logo replaces text */}
+                  <SheetTitle className="sr-only">My College Sathi</SheetTitle>
+                  <SheetDescription className="sr-only">
+                    Online degrees, counselling and admissions
+                  </SheetDescription>
                 </SheetHeader>
 
                 <div className="px-4 py-4">
@@ -95,7 +118,7 @@ export function Header() {
 
                 <SheetFooter className="border-t">
                   <Button asChild variant="outline" className="w-full justify-center gap-2">
-                    <a href="tel:+91XXXXXXXXXX">
+                    <a href="tel:+918048048077">
                       <Phone className="h-4 w-4" />
                       Call Now
                     </a>
