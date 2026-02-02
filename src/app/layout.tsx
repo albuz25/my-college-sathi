@@ -19,9 +19,29 @@ export const metadata: Metadata = {
   creator: "My College Sathi",
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://mycollegesathi.com"),
   openGraph: {
+    title: "My College Sathi | Online Degree Admissions",
+    description: "Find the best online degree programs from UGC-recognized universities. Compare degrees and get free counselling.",
     type: "website",
     locale: "en_IN",
     siteName: "My College Sathi",
+    url: "/",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "My College Sathi",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "My College Sathi | Online Degree Admissions",
+    description: "Find the best online degree programs. Compare degrees and get free counselling.",
+    images: ["/twitter-image"],
+  },
+  icons: {
+    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
   },
   robots: {
     index: true,

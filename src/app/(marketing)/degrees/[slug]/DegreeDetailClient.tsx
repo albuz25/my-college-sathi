@@ -351,23 +351,45 @@ export function DegreeDetailClient({ degree, similarDegrees, faqs }: DegreeDetai
       <section className="py-12">
         <div className="container mx-auto px-4">
           <Tabs defaultValue="overview" className="space-y-8">
-            <TabsList className="flex flex-wrap justify-start gap-2 h-auto bg-transparent">
-              <TabsTrigger value="overview" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+            <TabsList className="!grid w-full h-auto grid-cols-3 md:grid-cols-6 gap-2 rounded-2xl border border-border/60 bg-muted/20 p-2">
+              <TabsTrigger
+                value="overview"
+                className="!flex-none w-full min-w-0 rounded-xl px-2 py-2 text-xs sm:text-sm leading-tight justify-center truncate data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+              >
                 Overview
               </TabsTrigger>
-              <TabsTrigger value="curriculum" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+              <TabsTrigger
+                value="curriculum"
+                className="!flex-none w-full min-w-0 rounded-xl px-2 py-2 text-xs sm:text-sm leading-tight justify-center truncate data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+              >
                 Curriculum
               </TabsTrigger>
-              <TabsTrigger value="eligibility" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+              <TabsTrigger
+                value="eligibility"
+                className="!flex-none w-full min-w-0 rounded-xl px-2 py-2 text-xs sm:text-sm leading-tight justify-center truncate data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+              >
                 Eligibility
               </TabsTrigger>
-              <TabsTrigger value="career" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-                Career & Placement
+              <TabsTrigger
+                value="career"
+                className="!flex-none w-full min-w-0 rounded-xl px-2 py-2 text-xs sm:text-sm leading-tight justify-center truncate data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+                title="Career & Placement"
+              >
+                <span className="md:hidden">Career</span>
+                <span className="hidden md:inline">Career & Placement</span>
               </TabsTrigger>
-              <TabsTrigger value="admission" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-                Admission Process
+              <TabsTrigger
+                value="admission"
+                className="!flex-none w-full min-w-0 rounded-xl px-2 py-2 text-xs sm:text-sm leading-tight justify-center truncate data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+                title="Admission Process"
+              >
+                <span className="md:hidden">Admission</span>
+                <span className="hidden md:inline">Admission Process</span>
               </TabsTrigger>
-              <TabsTrigger value="faqs" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+              <TabsTrigger
+                value="faqs"
+                className="!flex-none w-full min-w-0 rounded-xl px-2 py-2 text-xs sm:text-sm leading-tight justify-center truncate data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+              >
                 FAQs
               </TabsTrigger>
             </TabsList>

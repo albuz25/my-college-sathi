@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { Menu, GraduationCap, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { LeadMagnetForm } from '@/components/leads/LeadMagnetForm';
 
 const navigation = [
@@ -62,45 +62,57 @@ export function Header() {
                   <span className="sr-only">Toggle menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[300px]">
-                <div className="flex flex-col gap-6 mt-6">
-                  <Link href="/" className="flex items-center gap-2" onClick={() => setIsOpen(false)}>
-                    <GraduationCap className="h-6 w-6 text-primary" />
-                    <span className="text-lg font-bold">My College Sathi</span>
-                  </Link>
-                  
-                  <nav className="flex flex-col gap-4">
+              <SheetContent side="right" className="w-[320px] p-0">
+                <SheetHeader className="border-b">
+                  <div className="flex items-center gap-2">
+                    <div className="h-9 w-9 rounded-lg bg-primary/10 flex items-center justify-center">
+                      <GraduationCap className="h-5 w-5 text-primary" />
+                    </div>
+                    <div className="leading-tight">
+                      <SheetTitle className="text-base">My College Sathi</SheetTitle>
+                      <SheetDescription className="text-xs">
+                        Online degrees • Counselling • Admissions
+                      </SheetDescription>
+                    </div>
+                  </div>
+                </SheetHeader>
+
+                <div className="px-4 py-4">
+                  <p className="text-xs font-medium text-muted-foreground mb-2">Menu</p>
+                  <nav className="flex flex-col gap-1">
                     {navigation.map((item) => (
                       <Link
                         key={item.name}
                         href={item.href}
-                        className="text-lg font-medium hover:text-primary"
+                        className="rounded-lg px-3 py-2.5 text-sm font-medium hover:bg-muted transition-colors"
                         onClick={() => setIsOpen(false)}
                       >
                         {item.name}
                       </Link>
                     ))}
                   </nav>
-
-                  <div className="flex flex-col gap-3 mt-4">
-                    <a 
-                      href="tel:+91XXXXXXXXXX" 
-                      className="flex items-center justify-center gap-2 py-2 border rounded-lg hover:bg-muted"
-                    >
-                      <Phone className="h-4 w-4" />
-                      <span>Call Now</span>
-                    </a>
-                    <Button 
-                      className="w-full"
-                      onClick={() => {
-                        setIsOpen(false);
-                        setShowEnquiryForm(true);
-                      }}
-                    >
-                      Get Free Counselling
-                    </Button>
-                  </div>
                 </div>
+
+                <SheetFooter className="border-t">
+                  <Button asChild variant="outline" className="w-full justify-center gap-2">
+                    <a href="tel:+91XXXXXXXXXX">
+                      <Phone className="h-4 w-4" />
+                      Call Now
+                    </a>
+                  </Button>
+                  <Button
+                    className="w-full"
+                    onClick={() => {
+                      setIsOpen(false);
+                      setShowEnquiryForm(true);
+                    }}
+                  >
+                    Get Free Counselling
+                  </Button>
+                  <p className="text-[11px] text-muted-foreground text-center">
+                    We typically respond within 24 hours
+                  </p>
+                </SheetFooter>
               </SheetContent>
             </Sheet>
           </div>
