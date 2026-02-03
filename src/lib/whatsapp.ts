@@ -1,4 +1,4 @@
-const WHATSAPP_PHONE = process.env.NEXT_PUBLIC_WHATSAPP_PHONE || '919891627255';
+const WHATSAPP_PHONE = process.env.NEXT_PUBLIC_WHATSAPP_PHONE || '918527977255';
 
 export function generateWhatsAppLink(degreeName: string): string {
   const message = encodeURIComponent(
