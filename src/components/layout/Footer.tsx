@@ -107,6 +107,9 @@ export function Footer() {
             <Link href="/terms" className="hover:text-primary">Terms of Service</Link>
           </div>
         </div>
+        <p className="text-xs text-slate-500 text-center mt-6">
+          Operated by Advanced Educare Training Pvt Ltd.
+        </p>
       </div>
     </footer>
   );
