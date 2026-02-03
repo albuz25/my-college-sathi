@@ -15,7 +15,7 @@ export function StickyFooterCTA({ degreeName, degreeId }: StickyFooterCTAProps) 
   const [showForm, setShowForm] = useState(false);
 
   const whatsappLink = generateWhatsAppLink(degreeName || 'online degrees');
-  const phoneNumber = process.env.NEXT_PUBLIC_CONTACT_PHONE || '+918048048077';
+  const phoneNumber = process.env.NEXT_PUBLIC_CONTACT_PHONE || '08048048077';
 
   return (
     <>

@@ -55,7 +55,7 @@ export function Header() {
 
             {/* CTA Buttons */}
             <div className="hidden md:flex items-center gap-3">
-              <a href="tel:+918048048077" className="flex items-center gap-1 text-sm text-muted-foreground hover:text-primary">
+              <a href="tel:08048048077" className="flex items-center gap-1 text-sm text-muted-foreground hover:text-primary">
                 <Phone className="h-4 w-4" />
                 <span>Call Now</span>
               </a>
@@ -118,7 +118,7 @@ export function Header() {
 
                 <SheetFooter className="border-t">
                   <Button asChild variant="outline" className="w-full justify-center gap-2">
-                    <a href="tel:+918048048077">
+                    <a href="tel:08048048077">
                       <Phone className="h-4 w-4" />
                       Call Now
                     </a>
