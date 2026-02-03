@@ -11,7 +11,7 @@ export function OrganizationSchema() {
     description: 'Your trusted partner for online degree admissions. We help students find the right degree from UGC-recognized universities.',
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: process.env.NEXT_PUBLIC_CONTACT_PHONE || '+91-9891627255',
+      telephone: process.env.NEXT_PUBLIC_CONTACT_PHONE || '+91-80-48048077',
       contactType: 'customer service',
       availableLanguage: ['English', 'Hindi'],
     },
