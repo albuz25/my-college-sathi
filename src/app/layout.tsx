@@ -64,6 +64,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <meta name="facebook-domain-verification" content="npaebwtcqwvfcr8jc0swrgw31t4sie" />
         <OrganizationSchema />
         <WebSiteSchema />
       </head>
