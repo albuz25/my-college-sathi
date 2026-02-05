@@ -40,7 +40,8 @@ import {
 import { PartnerUniversitiesSection } from '@/components/partners/PartnerUniversitiesSection';
 import { DegreeCard } from '@/components/degrees/DegreeCard';
 import { LeadMagnetForm } from '@/components/leads/LeadMagnetForm';
-import { CourseSchema, BreadcrumbSchema, FAQSchema } from '@/components/seo/JsonLd';
+import { CourseSchema, FAQSchema } from '@/components/seo/JsonLd';
+import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { generateWhatsAppLink } from '@/lib/whatsapp';
 import type { Degree, FAQ } from '@/types';
 
@@ -153,34 +154,19 @@ export function DegreeDetailClient({ degree, similarDegrees, faqs }: DegreeDetai
 
   return (
     <>
-      {/* Schema Markup */}
+      {/* Structured Data */}
       <CourseSchema degree={degree} />
-      <BreadcrumbSchema items={breadcrumbItems} />
       <FAQSchema faqs={degreeFaqs} />
-
-      {/* Breadcrumb */}
-      <div className="bg-muted/30 py-3 border-b">
-        <div className="container mx-auto px-4">
-          <nav className="flex items-center gap-2 text-sm">
-            <Link href="/" className="text-muted-foreground hover:text-primary">Home</Link>
-            <span className="text-muted-foreground">/</span>
-            <Link href="/degrees" className="text-muted-foreground hover:text-primary">Degrees</Link>
-            <span className="text-muted-foreground">/</span>
-            <span className="font-medium">{degree.name}</span>
-          </nav>
-        </div>
-      </div>
 
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-primary/10 via-background to-background py-12 lg:py-16">
         <div className="container mx-auto px-4">
-          <Link 
-            href="/degrees" 
-            className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary mb-6"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back to All Degrees
-          </Link>
+          <Breadcrumbs 
+            items={[
+              { name: 'All Degrees', url: '/degrees' },
+              { name: `Online ${degree.name}`, url: `/degrees/${degree.slug}` },
+            ]} 
+          />
 
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Degree Info */}

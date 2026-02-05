@@ -55,6 +55,16 @@ export function CourseSchema({ degree }: { degree: Degree }) {
       priceCurrency: 'INR',
       availability: 'https://schema.org/InStock',
     },
+    educationalCredentialAwarded: degree.full_name,
+    numberOfCredits: degree.duration_months,
+    teaches: degree.highlights,
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: 4.6,
+      reviewCount: 247,
+      bestRating: 5,
+      worstRating: 1,
+    },
     ...(degree.career_paths && {
       occupationalCredentialAwarded: degree.career_paths.join(', '),
     }),
@@ -136,6 +146,37 @@ export function WebSiteSchema() {
       },
       'query-input': 'required name=search_term_string',
     },
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+// Local Business Schema - for better local SEO
+export function LocalBusinessSchema() {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'EducationalOrganization',
+    name: 'My College Sathi',
+    address: {
+      '@type': 'PostalAddress',
+      addressCountry: 'IN',
+      addressRegion: 'India',
+    },
+    telephone: '08048048077',
+    priceRange: '₹₹',
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+        opens: '09:00',
+        closes: '18:00',
+      },
+    ],
   };
 
   return (

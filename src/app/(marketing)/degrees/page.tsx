@@ -2,11 +2,15 @@ import { Metadata } from 'next';
 import { DegreeCard } from '@/components/degrees/DegreeCard';
 import { PartnerUniversitiesSection } from '@/components/partners/PartnerUniversitiesSection';
 import { DegreeFilters } from '@/components/degrees/DegreeFilters';
+import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { getDegrees } from '@/lib/mock-data';
 
 export const metadata: Metadata = {
   title: 'All Online Degrees',
   description: 'Explore all online degree programs - MBA, BBA, MCA, BCA, M.Com, B.Com and more from UGC-recognized universities.',
+  alternates: {
+    canonical: '/degrees',
+  },
 };
 
 export default function DegreesPage() {
@@ -17,8 +21,9 @@ export default function DegreesPage() {
       {/* Page Header */}
       <section className="bg-gradient-to-r from-primary/10 to-background py-12">
         <div className="container mx-auto px-4">
+          <Breadcrumbs items={[{ name: 'All Degrees', url: '/degrees' }]} />
           <h1 className="text-3xl md:text-4xl font-bold mb-4">
-            Explore Online Degrees
+            All Online Degree Programs - UGC Recognized Universities
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl">
             Find the perfect online degree program from our partner universities. 

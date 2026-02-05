@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 import { useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { getPartnerUniversities } from '@/lib/mock-data';
@@ -83,12 +85,12 @@ function UniversityCard({ university }: { university: PartnerUniversity }) {
         }`}
       >
         {showLogo ? (
-          // Use <img> so we can reliably fallback on load error
-          <img
+          <Image
             src={university.logo_url}
-            alt={university.short_name || university.name}
+            alt={`${university.short_name || university.name} - UGC Recognized University`}
+            width={80}
+            height={80}
             className="w-full h-full object-contain p-1"
-            loading="lazy"
             onError={() => setLogoFailed(true)}
           />
         ) : (

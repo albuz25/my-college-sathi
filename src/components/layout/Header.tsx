@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 import { Menu, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -11,6 +12,7 @@ const navigation = [
   { name: 'Home', href: '/' },
   { name: 'All Degrees', href: '/degrees' },
   { name: 'Compare', href: '/compare' },
+  { name: 'Blog', href: '/blog' },
 ];
 
 export function Header() {
@@ -26,11 +28,13 @@ export function Header() {
             {/* Logo */}
             <Link href="/" className="flex items-center">
               {!logoFailed ? (
-                <img
+                <Image
                   src="/images/mycollegelogo.png"
-                  alt="My College Sathi"
+                  alt="My College Sathi - Online Degree Admissions"
+                  width={180}
+                  height={48}
+                  priority
                   className="h-10 w-auto block scale-[1.08] origin-left"
-                  loading="eager"
                   onError={() => setLogoFailed(true)}
                 />
               ) : (
@@ -80,11 +84,12 @@ export function Header() {
                     onClick={() => setIsOpen(false)}
                   >
                     {!logoFailed ? (
-                      <img
+                      <Image
                         src="/images/mycollegelogo.png"
-                        alt="My College Sathi"
+                        alt="My College Sathi - Online Degree Admissions"
+                        width={180}
+                        height={48}
                         className="h-10 w-auto block scale-[1.08] origin-left"
-                        loading="eager"
                         onError={() => setLogoFailed(true)}
                       />
                     ) : (

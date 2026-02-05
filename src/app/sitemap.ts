@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { getDegrees } from '@/lib/mock-data';
+import { getAllBlogPosts } from '@/lib/blog-data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://mycollegesathi.com';
@@ -13,6 +14,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(degree.updated_at),
     changeFrequency: 'weekly',
     priority: 0.8,
+  }));
+
+  // Get all blog posts
+  const blogPosts = getAllBlogPosts();
+
+  // Generate blog URLs
+  const blogUrls: MetadataRoute.Sitemap = blogPosts.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.updatedAt),
+    changeFrequency: 'monthly',
+    priority: 0.7,
   }));
 
   // Static pages
@@ -35,7 +47,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.7,
     },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
   ];
 
-  return [...staticPages, ...degreeUrls];
+  return [...staticPages, ...degreeUrls, ...blogUrls];
 }

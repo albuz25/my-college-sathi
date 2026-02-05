@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Phone, Mail, MapPin } from 'lucide-react';
 
 const degrees = [
@@ -26,11 +27,12 @@ export function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <Link href="/" className="inline-flex items-center">
-              <img
+              <Image
                 src="/images/mycollegelogo.png"
-                alt="My College Sathi"
+                alt="My College Sathi - Online Degree Admissions"
+                width={180}
+                height={48}
                 className="h-10 w-auto block scale-[1.06] origin-left"
-                loading="lazy"
               />
             </Link>
             <p className="text-sm text-slate-400">

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { OrganizationSchema, WebSiteSchema } from "@/components/seo/JsonLd";
+import { OrganizationSchema, WebSiteSchema, LocalBusinessSchema } from "@/components/seo/JsonLd";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -66,9 +66,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://riagdwyjvlkdeearcqmk.supabase.co" />
+        <link rel="dns-prefetch" href="https://wa.me" />
         <meta name="facebook-domain-verification" content="npaebwtcqwvfcr8jc0swrgw31t4sie" />
         <OrganizationSchema />
         <WebSiteSchema />
+        <LocalBusinessSchema />
       </head>
       <body className={`${inter.variable} font-sans antialiased`}>
         {children}

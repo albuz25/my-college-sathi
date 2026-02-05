@@ -1,7 +1,14 @@
+import type { Metadata } from 'next';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { CompareBasketBar } from '@/components/degrees/CompareBasketBar';
 import { WhatsAppButton } from '@/components/leads/WhatsAppButton';
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: '/',
+  },
+};
 
 export default function MarketingLayout({
   children,

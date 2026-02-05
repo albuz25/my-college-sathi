@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { CheckCircle2, Loader2, ShieldCheck, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -190,11 +191,12 @@ export function LeadMagnetForm({
           {/* Left panel (desktop) */}
           <div className="hidden md:block md:col-span-2 bg-gradient-to-b from-slate-50 to-slate-100 border-r p-6">
             <div className="flex items-center gap-3 mb-5">
-              <img
+              <Image
                 src="/images/mycollegelogo.png"
-                alt="My College Sathi"
+                alt="My College Sathi - Online Degree Admissions"
+                width={180}
+                height={48}
                 className="h-10 w-auto"
-                loading="lazy"
               />
             </div>
             <div className="space-y-4">

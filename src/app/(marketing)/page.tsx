@@ -112,9 +112,9 @@ export default function HomePage() {
                 Admissions Open for 2025-26
               </Badge>
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white">
-                Your Path to a{' '}
-                <span className="text-blue-300">Brighter Future</span>{' '}
-                Starts Here
+                Online Degree Programs from{' '}
+                <span className="text-blue-300">UGC-Recognized Universities</span>{' '}
+                in India
               </h1>
               <p className="text-base sm:text-lg text-blue-100/90 max-w-xl">
                 Explore online degree programs from 15+ UGC-recognized universities. 
