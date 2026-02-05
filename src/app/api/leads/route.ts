@@ -18,6 +18,7 @@ export async function POST(request: NextRequest) {
       name,
       phone,
       email,
+      currentCity,
       currentQualification,
       interestedDegreeName,
       interestedDegreeId,
@@ -51,6 +52,8 @@ export async function POST(request: NextRequest) {
       name: safeName,
       phone: safePhone,
       email: typeof email === 'string' && email.trim() ? email.trim() : null,
+      current_city:
+        typeof currentCity === 'string' && currentCity.trim() ? currentCity.trim() : null,
       current_qualification:
         typeof currentQualification === 'string' && currentQualification.trim()
           ? currentQualification.trim()

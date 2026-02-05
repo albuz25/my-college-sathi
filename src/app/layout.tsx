@@ -41,7 +41,9 @@ export const metadata: Metadata = {
     images: ["/twitter-image"],
   },
   icons: {
-    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+    icon: [{ url: "/images/mycollegelogo.png", type: "image/png", sizes: "any" }],
+    shortcut: "/images/mycollegelogo.png",
+    apple: "/images/mycollegelogo.png",
   },
   robots: {
     index: true,
