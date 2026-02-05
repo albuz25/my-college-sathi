@@ -4,7 +4,13 @@ export async function GET() {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://mycollegesathi.com';
   const degrees = getDegrees();
 
-  const images = [
+  interface ImageItem {
+    loc: string;
+    title: string;
+    caption?: string;
+  }
+
+  const images: ImageItem[] = [
     { loc: '/opengraph-image', title: 'My College Sathi - Online Degree Admissions' },
     { loc: '/twitter-image', title: 'My College Sathi Twitter Card' },
     { loc: '/images/mycollegelogo.png', title: 'My College Sathi Logo' },
