@@ -110,6 +110,8 @@ export function BreadcrumbSchema({
 }: { 
   items: { name: string; url: string }[] 
 }) {
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://mycollegesathi.com';
+  
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -117,7 +119,11 @@ export function BreadcrumbSchema({
       '@type': 'ListItem',
       position: index + 1,
       name: item.name,
-      item: item.url,
+      item: {
+        '@type': 'Thing',
+        '@id': item.url.startsWith('http') ? item.url : `${baseUrl}${item.url}`,
+        name: item.name,
+      },
     })),
   };
 
