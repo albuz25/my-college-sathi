@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { OrganizationSchema, WebSiteSchema, LocalBusinessSchema } from "@/components/seo/JsonLd";
+import { MetaPixel } from "@/components/analytics/MetaPixel";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -76,6 +77,7 @@ export default function RootLayout({
         <LocalBusinessSchema />
       </head>
       <body className={`${inter.variable} font-sans antialiased`}>
+        <MetaPixel />
         {children}
       </body>
     </html>

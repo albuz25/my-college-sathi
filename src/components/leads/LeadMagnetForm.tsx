@@ -7,6 +7,7 @@ import { CheckCircle2, Loader2, ShieldCheck, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { trackMetaEvent } from '@/components/analytics/MetaPixel';
 import {
   Select,
   SelectContent,
@@ -151,8 +152,19 @@ export function LeadMagnetForm({
 
       setIsSuccess(true);
       
+      // Track Meta Pixel conversion event
+      trackMetaEvent('Lead', {
+        content_name: formData.interestedDegree || degreeName || 'General',
+        content_category: variant === 'brochure' ? 'Brochure Download' : 'Enquiry Form',
+        value: 1,
+        currency: 'INR',
+      });
+      
       // If brochure variant, trigger download
       if (variant === 'brochure' && data.brochureUrl) {
+        trackMetaEvent('Download', {
+          content_name: degreeName || 'General Brochure',
+        });
         onSuccess?.({ brochureUrl: data.brochureUrl });
       } else {
         onSuccess?.({});

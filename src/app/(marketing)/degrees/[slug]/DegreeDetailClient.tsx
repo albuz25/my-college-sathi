@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { 
   Clock, 
@@ -43,6 +43,7 @@ import { LeadMagnetForm } from '@/components/leads/LeadMagnetForm';
 import { CourseSchema, FAQSchema } from '@/components/seo/JsonLd';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { generateWhatsAppLink } from '@/lib/whatsapp';
+import { trackMetaEvent } from '@/components/analytics/MetaPixel';
 import type { Degree, FAQ } from '@/types';
 
 interface DegreeDetailClientProps {
@@ -54,6 +55,17 @@ interface DegreeDetailClientProps {
 export function DegreeDetailClient({ degree, similarDegrees, faqs }: DegreeDetailClientProps) {
   const [showEnquiryForm, setShowEnquiryForm] = useState(false);
   const [showBrochureForm, setShowBrochureForm] = useState(false);
+
+  // Track ViewContent event when degree page loads
+  useEffect(() => {
+    trackMetaEvent('ViewContent', {
+      content_name: degree.name,
+      content_category: degree.category,
+      content_type: 'degree',
+      value: (degree.fee_range_min + degree.fee_range_max) / 2,
+      currency: 'INR',
+    });
+  }, [degree]);
 
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('en-IN', {

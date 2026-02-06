@@ -26,6 +26,7 @@ import { DegreeCard } from '@/components/degrees/DegreeCard';
 import { PartnerUniversitiesSection } from '@/components/partners/PartnerUniversitiesSection';
 import { LeadMagnetForm } from '@/components/leads/LeadMagnetForm';
 import { getFeaturedDegrees, getDegreesByCategory, getGeneralFAQs } from '@/lib/mock-data';
+import { trackMetaEvent } from '@/components/analytics/MetaPixel';
 
 export default function HomePage() {
   const [showEnquiryForm, setShowEnquiryForm] = useState(false);
@@ -68,6 +69,15 @@ export default function HomePage() {
       }
 
       setHeroFormSuccess(true);
+      
+      // Track Meta Pixel conversion
+      trackMetaEvent('Lead', {
+        content_name: heroFormData.degree || 'General',
+        content_category: 'Hero Form',
+        value: 1,
+        currency: 'INR',
+      });
+      
       setHeroFormData({ name: '', phone: '', degree: '' });
       
       // Reset success message after 5 seconds
