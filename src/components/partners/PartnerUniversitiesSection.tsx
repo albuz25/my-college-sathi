@@ -66,6 +66,19 @@ export function PartnerUniversitiesSection({
             100% Valid Degrees
           </Badge>
         </div>
+
+        {/* Platform Partner */}
+        <div className="flex justify-center items-center gap-2 mt-8 pt-8 border-t border-slate-200">
+          <span className="text-sm text-muted-foreground">In partnership with</span>
+          <a
+            href="https://collegevidya.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-primary hover:underline"
+          >
+            College Vidya
+          </a>
+        </div>
       </div>
     </section>
   );
