@@ -75,6 +75,14 @@ export default function RootLayout({
         <OrganizationSchema />
         <WebSiteSchema />
         <LocalBusinessSchema />
+        {/* Google Ads / gtag */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18060570546"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-18060570546');",
+          }}
+        />
       </head>
       <body className={`${inter.variable} font-sans antialiased`}>
         <MetaPixel />
