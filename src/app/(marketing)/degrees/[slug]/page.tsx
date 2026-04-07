@@ -17,16 +17,28 @@ export async function generateMetadata({ params }: DegreePageProps): Promise<Met
     };
   }
 
+  const fallbackTitle = `${degree.full_name} | My College Sathi`;
+  const metaTitle = degree.meta_title || fallbackTitle;
+  const metaDescription =
+    degree.meta_description ||
+    `Pursue your ${degree.full_name} (${degree.name}) online from UGC-recognized universities. ${degree.duration_text} duration, EMI options available.`;
+
   return {
-    title: `Online ${degree.name} - ${degree.full_name}`,
-    description: degree.meta_description || `Pursue your ${degree.full_name} (${degree.name}) online from UGC-recognized universities. ${degree.duration_text} duration, EMI options available.`,
+    title: metaTitle,
+    description: metaDescription,
     alternates: {
       canonical: `/degrees/${slug}`,
     },
     openGraph: {
-      title: `Online ${degree.name} Program | My College Sathi`,
-      description: `Get ${degree.full_name} from top UGC-recognized universities. Fee: ₹${(degree.fee_range_min/1000).toFixed(0)}K - ₹${(degree.fee_range_max/100000).toFixed(1)}L | Duration: ${degree.duration_text}`,
+      title: metaTitle,
+      description: metaDescription,
       type: 'website',
+      url: `/degrees/${slug}`,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: metaTitle,
+      description: metaDescription,
     },
   };
 }
