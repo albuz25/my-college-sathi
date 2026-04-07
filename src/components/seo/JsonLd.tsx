@@ -33,11 +33,20 @@ export function OrganizationSchema() {
 
 // Course Schema - used on degree detail pages
 export function CourseSchema({ degree }: { degree: Degree }) {
+  const courseName =
+    degree.slug === 'bvoc-animation-multimedia'
+      ? 'B.Voc in Animation and Multimedia'
+      : `Online ${degree.name} - ${degree.full_name}`;
+  const courseDescription =
+    degree.slug === 'bvoc-animation-multimedia'
+      ? 'B.Voc in Animation and Multimedia, also known as B.Voc in Multimedia and Animation, is a job-oriented animation degree course after 12th that includes 2D and 3D animation, VFX, graphic design, video editing, and motion graphics.'
+      : degree.description || `Pursue your ${degree.full_name} (${degree.name}) online from UGC-recognized universities.`;
+
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Course',
-    name: `Online ${degree.name} - ${degree.full_name}`,
-    description: degree.description || `Pursue your ${degree.full_name} (${degree.name}) online from UGC-recognized universities.`,
+    name: courseName,
+    description: courseDescription,
     provider: {
       '@type': 'Organization',
       name: 'My College Sathi',

@@ -9,7 +9,7 @@ const degrees = [
   { name: 'BCA', href: '/degrees/bca' },
   { name: 'M.Com', href: '/degrees/mcom' },
   { name: 'B.Com', href: '/degrees/bcom' },
-  { name: 'B.Voc Animation & Multimedia', href: '/degrees/bvoc-animation-multimedia' },
+  { name: 'B.Voc in Animation and Multimedia', href: '/degrees/bvoc-animation-multimedia' },
 ];
 
 const quickLinks = [
@@ -52,7 +52,7 @@ export function Footer() {
                     href={degree.href}
                     className="text-sm hover:text-primary transition-colors"
                   >
-                    Online {degree.name}
+                    {degree.name}
                   </Link>
                 </li>
               ))}

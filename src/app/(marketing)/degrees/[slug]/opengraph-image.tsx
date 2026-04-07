@@ -38,6 +38,10 @@ export default async function Image({ params }: { params: Promise<{ slug: string
     }
     return `₹${(amount / 1000).toFixed(0)}K`;
   };
+  const cardTitle =
+    degree.slug === 'bvoc-animation-multimedia'
+      ? 'B.Voc in Animation and Multimedia'
+      : `Online ${degree.name}`;
   
   return new ImageResponse(
     (
@@ -122,7 +126,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
               textShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
             }}
           >
-            Online {degree.name}
+            {cardTitle}
           </div>
           
           {/* Full Name */}

@@ -59,8 +59,11 @@ export function DegreeDetailClient({ degree, similarDegrees, faqs }: DegreeDetai
     ? 'B.Voc in Animation and Multimedia'
     : `Online ${degree.name}`;
   const pageSubtitle = degree.slug === 'bvoc-animation-multimedia'
-    ? 'UGC-recognized 3-year degree with project-based learning in animation, VFX, and multimedia.'
+    ? 'A job-oriented animation course after 12th covering 2D and 3D animation, VFX, graphic design, video editing, and motion graphics.'
     : degree.full_name;
+  const degreeDisplayName = degree.slug === 'bvoc-animation-multimedia'
+    ? 'B.Voc in Animation and Multimedia'
+    : `online ${degree.name}`;
 
   // Track ViewContent event when degree page loads
   useEffect(() => {
@@ -100,8 +103,8 @@ export function DegreeDetailClient({ degree, similarDegrees, faqs }: DegreeDetai
     {
       id: 'faq-1',
       degree_id: degree.id,
-      question: `Is online ${degree.name} valid for government jobs?`,
-      answer: `Yes, online ${degree.name} from UGC-recognized universities is completely valid and accepted for all government and private sector jobs. The degree has the same legal recognition as a regular on-campus degree. UGC has officially approved online education, making these degrees acceptable for UPSC, banking, PSU, and all competitive exams.`,
+      question: `Is ${degreeDisplayName} valid for government jobs?`,
+      answer: `Yes, ${degreeDisplayName} from UGC-recognized universities is completely valid and accepted for government and private sector roles. The degree has the same legal recognition as a regular on-campus degree, making it suitable for competitive exams and employment pathways.`,
       display_order: 1,
       is_active: true,
       created_at: new Date().toISOString(),
@@ -109,8 +112,8 @@ export function DegreeDetailClient({ degree, similarDegrees, faqs }: DegreeDetai
     {
       id: 'faq-2',
       degree_id: degree.id,
-      question: `What is the fee structure for online ${degree.name}?`,
-      answer: `The fee for online ${degree.name} ranges from ${formatCurrency(degree.fee_range_min)} to ${formatCurrency(degree.fee_range_max)} depending on the university you choose. ${degree.emi_available ? `Easy EMI options are available starting from ₹${degree.emi_starting?.toLocaleString()}/month.` : ''} The fee can be paid semester-wise or yearly, and many universities offer scholarships for meritorious students.`,
+      question: `What is the fee structure for ${degreeDisplayName}?`,
+      answer: `The fee for ${degreeDisplayName} ranges from ${formatCurrency(degree.fee_range_min)} to ${formatCurrency(degree.fee_range_max)} depending on the university you choose. ${degree.emi_available ? `Easy EMI options are available starting from ₹${degree.emi_starting?.toLocaleString()}/month.` : ''} The fee can be paid semester-wise or yearly, and many universities offer scholarships for meritorious students.`,
       display_order: 2,
       is_active: true,
       created_at: new Date().toISOString(),
@@ -118,8 +121,8 @@ export function DegreeDetailClient({ degree, similarDegrees, faqs }: DegreeDetai
     {
       id: 'faq-3',
       degree_id: degree.id,
-      question: `How long does it take to complete online ${degree.name}?`,
-      answer: `The online ${degree.name} program takes ${degree.duration_text} to complete. The program follows a semester-based structure with regular assignments, projects, and examinations. You can study at your own pace while meeting the semester deadlines. The curriculum is designed to provide comprehensive knowledge while accommodating working professionals.`,
+      question: `How long does it take to complete ${degreeDisplayName}?`,
+      answer: `The ${degreeDisplayName} program takes ${degree.duration_text} to complete. The program follows a semester-based structure with regular assignments, projects, and examinations. You can study at your own pace while meeting the semester deadlines.`,
       display_order: 3,
       is_active: true,
       created_at: new Date().toISOString(),
@@ -127,7 +130,7 @@ export function DegreeDetailClient({ degree, similarDegrees, faqs }: DegreeDetai
     {
       id: 'faq-4',
       degree_id: degree.id,
-      question: `What are the eligibility criteria for online ${degree.name}?`,
+      question: `What are the eligibility criteria for ${degreeDisplayName}?`,
       answer: `${degree.eligibility_criteria}${degree.work_experience_required ? ` Additionally, ${degree.min_work_experience} years of work experience is preferred for executive programs.` : ''} Documents required include mark sheets, ID proof, passport-size photographs, and address proof. Foreign nationals can also apply with equivalent qualifications.`,
       display_order: 4,
       is_active: true,
@@ -182,7 +185,7 @@ export function DegreeDetailClient({ degree, similarDegrees, faqs }: DegreeDetai
           <Breadcrumbs 
             items={[
               { name: 'All Degrees', url: '/degrees' },
-              { name: `Online ${degree.name}`, url: `/degrees/${degree.slug}` },
+              { name: pageTitle, url: `/degrees/${degree.slug}` },
             ]} 
           />
 
@@ -209,6 +212,11 @@ export function DegreeDetailClient({ degree, similarDegrees, faqs }: DegreeDetai
               <p className="text-lg text-muted-foreground leading-relaxed">
                 {degree.description}
               </p>
+              {degree.slug === 'bvoc-animation-multimedia' && (
+                <p className="text-base text-muted-foreground leading-relaxed">
+                  This B.Voc multimedia and animation program is ideal for students looking for an animation course after 12th or a VFX course after 12th with strong practical exposure.
+                </p>
+              )}
 
               {/* Key Stats */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -1086,9 +1094,9 @@ function getCurriculumForDegree(slug: string) {
       { title: 'Year 3', subjects: ['Auditing', 'Management Accounting', 'Financial Management', 'GST & Indirect Taxes', 'Project Work'] },
     ],
     'bvoc-animation-multimedia': [
-      { title: 'Year 1: Design and Animation Foundations', subjects: ['Principles of Design', 'Drawing for Animation', 'Digital Imaging', '2D Animation Basics', 'Communication Skills'] },
-      { title: 'Year 2: 3D and VFX Core Skills', subjects: ['3D Modeling and Texturing', 'Lighting and Rendering', 'Rigging and Character Animation', 'Compositing Fundamentals', 'Motion Graphics'] },
-      { title: 'Year 3: Advanced Production and Portfolio', subjects: ['Advanced VFX Pipeline', 'Game Art and Real-Time Basics', 'Showreel Development', 'Industry Project', 'Entrepreneurship and Freelancing'] },
+      { title: 'Year 1: Animation and Multimedia Foundations', subjects: ['Principles of Design', 'Drawing for Animation', 'Adobe Photoshop', 'Adobe Illustrator', '2D Animation Basics'] },
+      { title: 'Year 2: B.Voc Animation & VFX Core Training', subjects: ['3D Modeling and Texturing', 'Autodesk Maya', 'Compositing with After Effects', 'Video Editing with Premiere Pro', 'Motion Graphics'] },
+      { title: 'Year 3: Advanced Degree in Animation Practice', subjects: ['VFX Production Workflow', 'Blender for 3D and Rendering', 'Portfolio and Showreel Development', 'Industry Project', 'Entrepreneurship and Freelancing'] },
     ],
   };
 
@@ -1155,12 +1163,12 @@ function getLearningOutcomes(slug: string) {
       'Gain knowledge of taxation systems',
     ],
     'bvoc-animation-multimedia': [
-      'Build strong foundations in visual storytelling and design',
-      'Create 2D and 3D animation assets using industry tools',
-      'Understand VFX and compositing workflows for production',
-      'Develop motion graphics and multimedia content for digital platforms',
-      'Produce a portfolio and showreel through project-based learning',
-      'Prepare for careers in animation, VFX, gaming, and digital media',
+      'Build a strong foundation through a job-oriented animation degree course',
+      'Create 2D and 3D assets for multimedia and animation production',
+      'Apply VFX workflows for film, digital media, and ad creatives',
+      'Use tools such as Photoshop, Illustrator, After Effects, Premiere Pro, Maya, and Blender',
+      'Develop a portfolio and showreel for placement-focused roles',
+      'Prepare for careers as Animator, VFX Artist, Video Editor, Graphic Designer, and 3D Artist',
     ],
   };
 

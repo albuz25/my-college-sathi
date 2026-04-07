@@ -22,10 +22,25 @@ export async function generateMetadata({ params }: DegreePageProps): Promise<Met
   const metaDescription =
     degree.meta_description ||
     `Pursue your ${degree.full_name} (${degree.name}) online from UGC-recognized universities. ${degree.duration_text} duration, EMI options available.`;
+  const metaKeywords =
+    degree.slug === 'bvoc-animation-multimedia'
+      ? [
+          'B.Voc in Animation and Multimedia',
+          'B.Voc in Multimedia and Animation',
+          'B.Voc Animation & VFX',
+          'Degree in Animation',
+          'Degree in Multimedia and Animation',
+          'Animation Degree Course',
+          'Multimedia Degree Course',
+          'Animation Course after 12th',
+          'VFX Course after 12th',
+        ]
+      : undefined;
 
   return {
     title: metaTitle,
     description: metaDescription,
+    keywords: metaKeywords,
     alternates: {
       canonical: `/degrees/${slug}`,
     },
