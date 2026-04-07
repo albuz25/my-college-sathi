@@ -233,7 +233,7 @@ export function DegreeDetailClient({ degree, similarDegrees, faqs }: DegreeDetai
                 <StatCard 
                   icon={Laptop} 
                   label="Mode" 
-                  value="100% Online"
+                  value={degree.mode === 'online' ? 'Flexible Learning' : degree.mode}
                   color="orange"
                 />
               </div>
