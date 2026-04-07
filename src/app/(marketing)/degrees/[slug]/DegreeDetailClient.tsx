@@ -55,6 +55,12 @@ interface DegreeDetailClientProps {
 export function DegreeDetailClient({ degree, similarDegrees, faqs }: DegreeDetailClientProps) {
   const [showEnquiryForm, setShowEnquiryForm] = useState(false);
   const [showBrochureForm, setShowBrochureForm] = useState(false);
+  const pageTitle = degree.slug === 'bvoc-animation-multimedia'
+    ? 'B.Voc in Animation and Multimedia'
+    : `Online ${degree.name}`;
+  const pageSubtitle = degree.slug === 'bvoc-animation-multimedia'
+    ? 'UGC-recognized 3-year degree with project-based learning in animation, VFX, and multimedia.'
+    : degree.full_name;
 
   // Track ViewContent event when degree page loads
   useEffect(() => {
@@ -192,10 +198,10 @@ export function DegreeDetailClient({ degree, similarDegrees, faqs }: DegreeDetai
 
               <div>
                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3">
-                  Online {degree.name}
+                  {pageTitle}
                 </h1>
                 <p className="text-xl md:text-2xl text-muted-foreground">
-                  {degree.full_name}
+                  {pageSubtitle}
                 </p>
               </div>
 
