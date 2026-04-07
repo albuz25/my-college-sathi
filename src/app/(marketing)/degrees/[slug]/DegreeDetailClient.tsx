@@ -1079,6 +1079,11 @@ function getCurriculumForDegree(slug: string) {
       { title: 'Year 2', subjects: ['Corporate Accounting', 'Cost Accounting', 'Business Statistics', 'Income Tax', 'Company Law'] },
       { title: 'Year 3', subjects: ['Auditing', 'Management Accounting', 'Financial Management', 'GST & Indirect Taxes', 'Project Work'] },
     ],
+    'bvoc-animation-multimedia': [
+      { title: 'Year 1: Design and Animation Foundations', subjects: ['Principles of Design', 'Drawing for Animation', 'Digital Imaging', '2D Animation Basics', 'Communication Skills'] },
+      { title: 'Year 2: 3D and VFX Core Skills', subjects: ['3D Modeling and Texturing', 'Lighting and Rendering', 'Rigging and Character Animation', 'Compositing Fundamentals', 'Motion Graphics'] },
+      { title: 'Year 3: Advanced Production and Portfolio', subjects: ['Advanced VFX Pipeline', 'Game Art and Real-Time Basics', 'Showreel Development', 'Industry Project', 'Entrepreneurship and Freelancing'] },
+    ],
   };
 
   return curriculumData[slug] || [
@@ -1142,6 +1147,14 @@ function getLearningOutcomes(slug: string) {
       'Build analytical and numerical skills',
       'Prepare for professional certifications (CA, CMA)',
       'Gain knowledge of taxation systems',
+    ],
+    'bvoc-animation-multimedia': [
+      'Build strong foundations in visual storytelling and design',
+      'Create 2D and 3D animation assets using industry tools',
+      'Understand VFX and compositing workflows for production',
+      'Develop motion graphics and multimedia content for digital platforms',
+      'Produce a portfolio and showreel through project-based learning',
+      'Prepare for careers in animation, VFX, gaming, and digital media',
     ],
   };
 

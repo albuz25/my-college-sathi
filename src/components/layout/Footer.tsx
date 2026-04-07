@@ -9,6 +9,7 @@ const degrees = [
   { name: 'BCA', href: '/degrees/bca' },
   { name: 'M.Com', href: '/degrees/mcom' },
   { name: 'B.Com', href: '/degrees/bcom' },
+  { name: 'B.Voc Animation & Multimedia', href: '/degrees/bvoc-animation-multimedia' },
 ];
 
 const quickLinks = [

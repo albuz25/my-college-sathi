@@ -46,6 +46,7 @@ const degrees = [
   { value: 'bca', label: 'BCA' },
   { value: 'mcom', label: 'M.Com' },
   { value: 'bcom', label: 'B.Com' },
+  { value: 'bvoc-animation-multimedia', label: 'B.Voc in Animation and Multimedia' },
   { value: 'other', label: 'Other' },
 ];
 
